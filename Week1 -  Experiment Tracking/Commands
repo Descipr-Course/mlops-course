@@ -1,0 +1,30 @@
+
+
+
+#############Environmnent Isolation #####################
+
+
+#Install pipenv
+
+pip install pipenv
+
+#Activate pipenv
+#Ensure that you are in the directory where you want to create an isolated enviroment
+#Run the below command
+pipenv shell
+
+#this will activate an envriment with the same name as directory where you ran this command
+
+#Now, from here on, to install any python package, run "pipenv install <package_name>"
+
+
+
+#############Settingup MLFlow Locally #####################
+
+#we will need following package in this pipenv environment - so run the below command
+
+pipenv install mlflow scikit-learn pandas seaborn hyperopt xgboost fastparquet boto3
+
+#Running mlflow locally
+
+mlflow ui --backend-store-uri sqlite:///mlflow.db
