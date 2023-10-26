@@ -3,4 +3,4 @@ This is a 6-week long instructor-led, community-driven Live cohort-based course 
 
 ## Cohort Curriculum
 
-Week 0 - 
+Week 0 - Environment Set up
