@@ -4,7 +4,7 @@
 
 
 ## Installing VS Code
-Download and Install from [here](https://github.com/DataTalksClub/mlops-zoomcamp/tree/main/)
+Download and Install from [here](https://code.visualstudio.com/download)
 
 ## Generating and adding a SSH Key
 
