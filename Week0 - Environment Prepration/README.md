@@ -30,7 +30,9 @@ ssh-keygen -t rsa -f gcp -C <user_name> -b 2048
 ![plot](/images/SSH-2.jpg)
 
 13.	Got to Git bas and run
-a.	cat gcp.pub
+```
+cat gcp.pub
+```
 14.	This command will display the public part of the key on the screen
 15.	Copy it
 16.	Paste in the GCP window in the field and hit save
