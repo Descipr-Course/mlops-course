@@ -7,10 +7,10 @@ def print_an_integer(x):
 
 
 @flow
-def my_flow():
+def print_int_flow():
     print_an_integer(1)
     print_an_integer(2)
 
 
 if __name__ == "__main__":
-    my_flow()
+    print_int_flow()

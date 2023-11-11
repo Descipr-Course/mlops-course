@@ -19,15 +19,12 @@ import mlflow
 from mlflow.entities import ViewType
 from mlflow.tracking import MlflowClient
 from sklearn.linear_model import LinearRegression
-from prefect import task, flow
 
 from prefect import flow, task, get_run_logger
 from prefect.task_runners import SequentialTaskRunner
 from google.cloud import storage
 
 client = storage.Client()
-
-print("import executed")
 
 TRACKING_SERVER_HOST = "34.93.131.49"
 TRACKING_SERVER_PORT = "5000"

@@ -1,9 +1,13 @@
 deployments:
-- name: nyc_taxi_local
-  entrypoint: Week2-Orchestration/2.Basic-training-orchestrate/training-pipeline.py:main
+- name: null
+  version: null
+  tags: []
+  description: null
+  schedule: {}
+  flow_name: null
+  entrypoint: null
+  parameters: {}
   work_pool:
-    name: nyc_taxi_trainig
-- name: nyc_taxi_gcs
-  entrypoint: Week2-Orchestration/3.Orchestrate-gcp/training-pipeline-gcp.py:main_gcs
-  work_pool:
-    name: nyc_taxi_trainig
+    name: null
+    work_queue_name: null
+    job_variables: {}
