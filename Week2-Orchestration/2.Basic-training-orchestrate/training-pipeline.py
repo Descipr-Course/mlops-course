@@ -21,8 +21,15 @@ from mlflow.tracking import MlflowClient
 from sklearn.linear_model import LinearRegression
 from prefect import task, flow
 
+from prefect import flow, task, get_run_logger
+from prefect.task_runners import SequentialTaskRunner
+from google.cloud import storage
 
-TRACKING_SERVER_HOST = "34.93.73.89"
+client = storage.Client()
+
+print("import executed")
+
+TRACKING_SERVER_HOST = "34.93.131.49"
 TRACKING_SERVER_PORT = "5000"
 TRAIN_DATA_PATH = "/home/mouba/mlops-course/data/yellow_tripdata_2023-01.parquet"
 VALID_DATA_PATH = "/home/mouba/mlops-course/data/yellow_tripdata_2023-02.parquet"
@@ -50,7 +57,7 @@ def read_dataframe(filename):
     categorical = ['PULocationID', 'DOLocationID']
     df[categorical] = df[categorical].astype(str)
     
-    df = df.sample(frac=0.1)
+    df = df.sample(frac=0.01)
     df.reset_index(inplace=True)
     
     df['PU_DO'] = df['PULocationID'] + '_' + df['DOLocationID']
@@ -60,12 +67,14 @@ def read_dataframe(filename):
 @task
 def vectorizer(df: pd.DataFrame):
     features = ['PU_DO', 'trip_distance']
-    dict_df = df[features].to_dict(orient='records')
-    tdf = dv.fit_transform(dict_df)
+    tdf = df[features]
+    #dict_df = df[features].to_dict(orient='records')
+    #tdf = dv.fit_transform(dict_df)
     return tdf
 
 @task
 def train_model_rf_search(x_train, x_val, y_train, y_val):
+    
     mlflow.sklearn.autolog()
 
     def objective(params):
