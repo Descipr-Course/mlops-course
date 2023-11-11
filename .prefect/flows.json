@@ -1,3 +1,4 @@
 {
-  "main": "Week2-Orchestration/2.Basic-training-orchestrate/training-pipeline.py:main"
+  "main": "Week2-Orchestration/2.Basic-training-orchestrate/training-pipeline.py:main",
+  "main-gcs": "Week2-Orchestration/3.Orchestrate-gcp/training-pipeline-gcp.py:main_gcs"
 }
