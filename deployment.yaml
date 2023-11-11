@@ -3,7 +3,3 @@ deployments:
   entrypoint: Week2-Orchestration/2.Basic-training-orchestrate/training-pipeline.py:main
   work_pool:
     name: nyc_taxi_trainig
-- name: nyc_taxi_gcs
-  entrypoint: Week2-Orchestration/3.Orchestrate-gcp/training-pipeline-gcp.py:main_gcs
-  work_pool:
-    name: nyc_taxi_trainig
