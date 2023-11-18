@@ -14,13 +14,13 @@ import gcsfs
 
 client = storage.Client()
 
-TRACKING_SERVER_HOST = "34.93.177.58"
+TRACKING_SERVER_HOST = "34.93.172.213"
 TRACKING_SERVER_PORT = "5000"
 PRED_DATA_PATH = "gs://descipr_data/yellow_tripdata_2023-02.parquet"
 EXPERIMENT_NAME = "nyc-taxi-regression"
 MODEL_NAME = "nyc-regression-model"
 RUN_ID = "1392e439ddbf457ab2b6a3db66af97a9"
-MLFLOW_ENABLED = False #if set false it takes best model based on RUN ID from GCS bucket
+MLFLOW_ENABLED = True #if set false it takes best model based on RUN ID from GCS bucket
 
 
 TRACKING_URI = f"http://{TRACKING_SERVER_HOST}:{TRACKING_SERVER_PORT}"
@@ -80,13 +80,13 @@ def load_model():
     
 
 
-def predict(features):
-    """
-    predict the count based on input features
-    """
-    model = load_model()
-    preds = model.predict(features)
-    return float(preds[0])
+#def predict(features):
+#    """
+##    predict the count based on input features
+#    """
+#    model = load_model()
+#    preds = model.predict(features)
+#    return float(preds[0])
 
 def main():
     """
@@ -112,4 +112,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

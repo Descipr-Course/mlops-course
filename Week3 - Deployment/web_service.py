@@ -7,7 +7,7 @@ from google.cloud import storage
 
 client = storage.Client()
 
-TRACKING_SERVER_HOST = "34.93.177.58"
+TRACKING_SERVER_HOST = "34.93.172.213"
 TRACKING_SERVER_PORT = "5000"
 MODEL_NAME = "nyc-regression-model"
 RUN_ID = "1392e439ddbf457ab2b6a3db66af97a9"
@@ -52,7 +52,7 @@ def predict_endpoint():
     pred = predict(bike_data)
 
     result = {
-        'count': pred
+        'duration': pred
     }
 
     return jsonify(result)
