@@ -82,7 +82,7 @@ def load_model():
 
 #def predict(features):
 #    """
-##    predict the count based on input features
+#    predict the count based on input features
 #    """
 #    model = load_model()
 #    preds = model.predict(features)
