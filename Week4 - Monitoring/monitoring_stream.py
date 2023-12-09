@@ -73,7 +73,7 @@ def create_dashboard():
     df = pd.DataFrame(data)
     
     print("starting to load data to BQ")
-    pandas_gbq.to_gbq(df, BQ_TABLE_ID, BQ_PROJECT_ID)
+    pandas_gbq.to_gbq(df, BQ_TABLE_ID, BQ_PROJECT_ID, if_exists="append")
     print("Data loaded to BQ")
     
 

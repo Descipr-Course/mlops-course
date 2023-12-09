@@ -92,7 +92,7 @@ def train_model_rf_search(x_train, x_val, y_train, y_val):
             mlflow.log_metric("r2_score", r2score)
                 
             mlflow.sklearn.log_model(rf_model, artifact_path="models")
-
+            
         return {'loss': rmse, 'status': STATUS_OK}
 
 
