@@ -10,9 +10,14 @@ import gcsfs
 
 from google.cloud import storage
 
-REFERENCE_DATA_PATH = 'gs://descipr-reference/reference_data.csv'
-CURRENT_DATA_PATH = 'gs://descipr-predictions/prediction.csv'
-REPORT_PATH = "./dashboards/data_drift.html"
+#REFERENCE_DATA_PATH = 'gs://descipr-reference/reference_data.csv'
+#CURRENT_DATA_PATH = 'gs://descipr-predictions/prediction.csv'
+#REPORT_PATH = "./dashboards/data_drift.html"
+
+REFERENCE_DATA_PATH = os.getenv("REFERENCE_DATA_PATH", 'gs://descipr-reference/reference_data.csv')
+CURRENT_DATA_PATH = os.getenv("CURRENT_DATA_PATH", 'gs://descipr-predictions/prediction.csv')
+REPORT_PATH = os.getenv("REPORT_PATH", "./dashboards/data_drift.html")
+
 
 client = storage.Client()
 

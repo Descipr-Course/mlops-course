@@ -7,12 +7,20 @@ from google.cloud import storage
 
 client = storage.Client()
 
-TRACKING_SERVER_HOST = "34.93.172.213"
-TRACKING_SERVER_PORT = "5000"
-MODEL_NAME = "nyc-regression-model"
-RUN_ID = "1392e439ddbf457ab2b6a3db66af97a9"
-MLFLOW_ENABLED = False #if set false it takes best model based on RUN ID from GCS bucket
+#TRACKING_SERVER_HOST = "34.93.172.213"
+#TRACKING_SERVER_PORT = "5000"
+#MODEL_NAME = "nyc-regression-model"
+#RUN_ID = "1392e439ddbf457ab2b6a3db66af97a9"
+#MLFLOW_ENABLED = False #if set false it takes best model based on RUN ID from GCS bucket
+#TRACKING_URI = f"http://{TRACKING_SERVER_HOST}:{TRACKING_SERVER_PORT}"
+
+
+TRACKING_SERVER_HOST = os.getenv("TRACKING_SERVER_HOST", "localhost")
+TRACKING_SERVER_PORT = os.getenv("TRACKING_SERVER_PORT", "5000")
+MODEL_NAME = os.getenv("MODEL_NAME", "nyc-regression-model")
+RUN_ID = os.getenv("RUN_ID", "1392e439ddbf457ab2b6a3db66af97a9")
 TRACKING_URI = f"http://{TRACKING_SERVER_HOST}:{TRACKING_SERVER_PORT}"
+MLFLOW_ENABLED = False #if set false it takes best model based on RUN ID from GCS bucket
 
 
 def load_model():

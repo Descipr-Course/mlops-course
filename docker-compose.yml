@@ -1,0 +1,55 @@
+version: '3.9'
+
+networks:
+  front-tier:
+  back-tier:
+
+services:
+
+  prefect-server:
+    build:
+      context: ./Week2-Orchestration
+      dockerfile: Dockerfile
+    container_name: prefect-server
+    expose:
+      - "4200"
+    ports:
+      - "127.0.0.1:4200:4200"
+    command: prefect server start --host=0.0.0.0
+    networks:
+      - back-tier
+
+  prediction-service:
+    build: 
+      context: ./Week3 - Deployment
+      dockerfile: Dockerfile
+    environment:
+      RUN_ID: "1392e439ddbf457ab2b6a3db66af97a9"
+      TRACKING_SERVER_HOST: "34.93.33.76"
+      TRACKING_SERVER_PORT: "5000"
+      MODEL_NAME: "nyc-regression-model"
+
+    expose:
+      - "9696"
+    ports:
+      - "9696:9696"
+    command: gunicorn --bind=0.0.0.0:9696 web_service:app
+
+    networks:
+      - back-tier
+
+
+  monitoring-service:
+    build: 
+      context: ./Week4 - Monitoring
+      dockerfile: Dockerfile
+    environment:
+      REFERENCE_DATA_PATH: "gs://descipr-reference/reference_data.csv"
+      CURRENT_DATA_PATH: "gs://descipr-predictions/prediction.csv"
+      REPORT_PATH: "./dashboards/data_drift.html"
+    ports:
+      - "8001:8001"
+    networks:
+      - back-tier
+    volumes:
+      - './Week4 - Monitoring/dashboards:/app/dashboards'

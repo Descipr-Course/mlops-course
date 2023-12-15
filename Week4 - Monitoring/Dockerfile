@@ -9,8 +9,8 @@ COPY [ "Pipfile", "Pipfile.lock", "./" ]
 
 RUN pipenv install --system --deploy
 
-COPY [ "web_service.py", "./" ]
+COPY . .
 
-#EXPOSE 9696
+EXPOSE 8001
 
-#ENTRYPOINT [ "gunicorn", "--bind=0.0.0.0:9696", "web_service:app" ]
+CMD uvicorn app:app --host 0.0.0.0 --port 8001
